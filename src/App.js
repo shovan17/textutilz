@@ -3,7 +3,7 @@ import Alert from './components/Alert';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import{
   BrowserRouter as Router,
    Routes,
@@ -27,17 +27,26 @@ function App() {
           setAlert(null);
       }, 1500);
   }
+  useEffect(() => {
+    const savedMode = localStorage.getItem('mode');
+    if (savedMode) {
+        setMode(savedMode);
+        document.body.style.backgroundColor = savedMode === 'dark' ? '#343a40' : 'white';
+    }
+}, []);
 
   const toggleMode =()=>{
     if(mode ==='light'){
       setMode ('dark');
       document.body.style.backgroundColor = '#343a40';
+      document.body.style.transition = 'background-color 0.5s ease';
       showAlert("Dark mode has been enabled","success");
       document.title = 'Textutilz - Dark Mode';
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
+      document.body.style.transition = 'background-color 0.5s ease';
       showAlert("Light mode has been enabled","success");
       document.title = 'Textutilz - Light Mode';
     }

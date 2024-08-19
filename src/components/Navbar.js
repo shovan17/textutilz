@@ -32,6 +32,7 @@ export default function Navbar(props) {//write here --> function Navbar(props)
         
       </ul>
       <form className="d-flex" role="search">
+        {/* <div className="bg-primary rounded mx-2" onClick={} style={{height: '30px', width: '30px'}}></div> */}
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
